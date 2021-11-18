@@ -5,5 +5,13 @@ const createWindow = () => {
       height: 600
     })
   
-    win.loadFile('IDE/index.html')
+    win.loadFile('IDE/pages/index.html')
   }
+
+  app.whenReady().then(() => {
+    createWindow()
+  
+    app.on('activate', () => {
+      if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
+  })

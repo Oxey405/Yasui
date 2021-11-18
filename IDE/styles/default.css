@@ -1,0 +1,30 @@
+/*
+What is that file :
+This is the default CSS file.
+You can look at all the defined colors here
+------------------------------------------------------
+Credits : © 2021 Oxey405 (Alexis) <Oxey405@gmail.com>
+License : MIT LICENSE
+*/
+:root {
+    --darkgreen: #000f08;
+    --pine-green: #136f63;
+    --citrus-yellow: #e0ca3c;
+    --coquelicot: #f34213;
+    --russian-violet: #3e2f5b;
+    --font-default: 'Roboto Mono', monospace;
+  }
+
+body {
+    background-color: var(--darkgreen);
+    font-family:  var(--font-default);
+    color: white;
+    text-align: center;
+}
+.centeralign {
+    text-align: center;
+}
+
+.headingone {
+    font-size: 10vh;
+}
