@@ -1,0 +1,22 @@
+{
+  "name": "yasui",
+  "version": "1.0.0",
+  "description": "A cool-looking Interface to make a programm using nodeJS technologies",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oxey405/Yasui.git"
+  },
+  "author": "Oxey405",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Oxey405/Yasui/issues"
+  },
+  "homepage": "https://github.com/Oxey405/Yasui#readme",
+  "dependencies": {
+    "electron": "^16.0.1"
+  }
+}
