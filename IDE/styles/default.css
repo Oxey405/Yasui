@@ -20,6 +20,8 @@ body {
     font-family:  var(--font-default);
     color: white;
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
 .centeralign {
     text-align: center;
@@ -27,4 +29,24 @@ body {
 
 .headingone {
     font-size: 10vh;
+}
+.headingtwo {
+    font-size: 4vh;
+    color: rgb(190, 190, 190);
+}
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.main-content {
+    width: 100vw;
+    color: white;
+    z-index: 99;
+    position: absolute;
+    width: 100%;
+    margin: 0px auto;
+    padding: 120px 0px;
 }
