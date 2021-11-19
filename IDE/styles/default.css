@@ -7,16 +7,18 @@ Credits : © 2021 Oxey405 (Alexis) <Oxey405@gmail.com>
 License : MIT LICENSE
 */
 :root {
+    --supergrey: #141414;
+    --stone-gray: #494949;
     --darkgreen: #000f08;
     --pine-green: #136f63;
     --citrus-yellow: #e0ca3c;
     --coquelicot: #f34213;
-    --russian-violet: #3e2f5b;
+    --bluey: #3e2f5b;
     --font-default: 'Roboto Mono', monospace;
   }
 
 body {
-    background-color: var(--darkgreen);
+    background-color: var(--supergrey);
     font-family:  var(--font-default);
     color: white;
     text-align: center;
@@ -49,4 +51,41 @@ body {
     width: 100%;
     margin: 0px auto;
     padding: 120px 0px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 3px;
+    border: solid;
+    border-color: white;
+}
+::-webkit-scrollbar-track {
+    background: #ffffff00;
+}
+
+.firstchoicebutton {
+    border: none;
+    border-radius: 10vh;
+    background-color: var(--pine-green);
+    color: white;
+    width: 10vw;
+    height: 4vh;
+}
+.secondchoicebutton {
+    border: none;
+    border-radius: 10vh;
+    background-color: var(--bluey);
+    color: white;
+    width: 10vw;
+    height: 4vh;
+}
+.button-array {
+    width: 40vw;
+    height: 30vh;
+    background-color: var(--stone-gray);
+    border-radius: 4vh;
+    display: flex; flex-direction: row; justify-content: center;align-items: center;
 }

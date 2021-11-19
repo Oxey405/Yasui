@@ -12,13 +12,13 @@ renderer.setPixelRatio(window.devicePixelRatio);
 
 
 camera.position.setZ(-50);
-camera.position.setX(0.2);
+camera.position.setX(0.3);
 
 
-const geometry = new THREE.IcosahedronGeometry(3, 1);
+const geometry = new THREE.IcosahedronGeometry(2, 1);
 const basicColor = new THREE.Color("#8063F7");
 
-const material = new THREE.MeshBasicMaterial({ color: basicColor, wireframe:true});
+const material = new THREE.MeshBasicMaterial({ color: basicColor, wireframe:true, });
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
 function resizeRendererToDisplaySize(renderer) {
