@@ -1,6 +1,6 @@
 # CoreApp folder
 Contains all the essentials scripts to make the application work
-## Folder organisation
+## 📁 Folder organisation
 | Folder name         | what does it contains
 |--------------|:-----:|
 | BuildsAndPreview |  Contains every scripts that are related to build the programm and test it |
