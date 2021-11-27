@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YasUI Editor</title>
+    <link rel="stylesheet" href="../styles/default.css" />
+    <!-- ALWAYS PUT DEPENDENCIES MANAGER HERE -->
+    <script src="../../CoreApp/SystemRelated/modulesManager.js"></script>
+    <script>
+      //DEBUGGING SCRIPT TO WARN CONTRIBUTORS
+      if(typeof os == 'undefined' || typeof fs == 'undefined' || typeof remote == 'undefined') {
+        console.warn("At least one of the most important modules is missing.\r\nBe sure to import \"../../CoreApp/SystemRelated/modulesManager.js\" in head\r\nto import all the necessary modules in the page.");
+        alert("A critical error occured ! Error code : NO-MODULES-LOADED");
+      }
+    </script>
+  </head>
+  <body>
+    <!-- <canvas class="bg" id="bg"> </canvas> -->
+    <div class="main-content">
+      <header class="aligncenter">
+        <h1 class="headingone bigsizefont">Yasui code !</h1>
+        <h2 class="headingtwo">A software to build programms without code</h2>
+        <div
+          style="display: flex; flex-direction: row; justify-content: center"
+        >
+          <div class="button-array">
+            <button style="margin-right: 40px" class="firstchoicebutton">
+              Create project
+            </button>
+            <button class="secondchoicebutton">Load project</button>
+            <input class="txtInput" type="text" id="projectPath" placeholder="Project's path">
+            <button style="margin-left: 10px;" onclick="openFolder();" class="normalbutton">📁</button>
+          </div>
+        </div>
+      </header>
+    </div>
+    <!-- dependencies -->
+    <script src="../../CoreApp/InterfaceInteractions/projectManager.js"></script>
+    <script src="../../CoreApp/SystemRelated/configLoader.js"></script>
+    <script src="../../CoreApp/InterfaceInteractions/dialogsManager.js"></script>
+
+
+    <script>
+      //getting the configuration
+      getConfig();
+      var newFolderSelected ;
+      var checkSelectedFolder;
+      //open a folder's dialog
+       function openFolder() {
+        showFolderSelectionDialog(appConfig.projectsFolder);
+        startFolderInterval();
+      }
+      //start a custom-made "async" function to wait for the user to select a folder
+      function startFolderInterval() {
+        console.log("statring folder interval");
+        checkSelectedFolder = setInterval(() => {
+        console.log("ahahah");
+          if(newFolderSelected != undefined) {
+            console.log("recieved " + newFolderSelected);
+            var folderSelectedRegex ;
+                  if(newFolderSelected.includes("\\")) {
+              var antislashregex = /\\/g;
+              folderSelectedRegex = newFolderSelected.replace(antislashregex, "/");
+          } 
+          document.getElementById("projectPath").value = folderSelectedRegex;
+          setDefaultFolderPath(folderSelectedRegex);
+          closeFolderInterval();
+          }
+        }, 100);
+      }
+      //stop the custom-made "async" function to wait for the user to selet a folder
+        closeFolderInterval();
+
+        function closeFolderInterval() {
+          newFolderSelected == undefined;
+          console.log("cleared interval");
+          clearInterval(checkSelectedFolder);
+
+        }
+        //at the start, wait 500ms and then, set the value of the projectPath to the default projectsFolder
+      setTimeout(() => {document.getElementById("projectPath").value = appConfig.projectsFolder;}, 500);
+    </script>
+    <!-- <script src="../VanillaJS/threeD.js"></script> -->
+  </body>
+</html>

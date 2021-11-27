@@ -10,8 +10,8 @@ License : MIT LICENSE
     --supergrey: #141414;
     --stone-gray: #494949;
     --darkgreen: #000f08;
-    --pine-green: #136f63;
-    --citrus-yellow: #e0ca3c;
+    --pine-green: #07C51A;
+    --citrus-yellow: #FEBF1F;
     --coquelicot: #f34213;
     --bluey: #3e2f5b;
     --font-default: 'Roboto Mono', monospace;
@@ -44,13 +44,11 @@ body {
     height: 100%;
 }
 .main-content {
-    width: 100vw;
     color: white;
     z-index: 99;
     position: absolute;
     width: 100%;
     margin: 0px auto;
-    padding: 120px 0px;
 }
 
 ::-webkit-scrollbar {
@@ -71,21 +69,43 @@ body {
     border-radius: 10vh;
     background-color: var(--pine-green);
     color: white;
-    width: 10vw;
+    width: 18vw;
+    min-width: fit-content;
     height: 4vh;
+    min-height: fit-content;
 }
 .secondchoicebutton {
     border: none;
     border-radius: 10vh;
     background-color: var(--bluey);
     color: white;
-    width: 10vw;
+    width: 18vw;
+    min-width: fit-content;
+    height: 4vh;
+    min-height: fit-content;
+}
+.normalbutton {
+    border: none;
+    border-radius: 10vh;
+    background-color: var(#a8a8a8);
+    color: rgb(10, 10, 10);
+    width: 5vw;
     height: 4vh;
 }
 .button-array {
-    width: 40vw;
+    width: 48vw;
     height: 30vh;
     background-color: var(--stone-gray);
     border-radius: 4vh;
-    display: flex; flex-direction: row; justify-content: center;align-items: center;
+    display: flex; flex-direction: row; justify-content: center;align-items: center;flex-wrap: wrap;
+}
+ .space-5vh {
+     height: 5vh;
+     width: 5vw;
+ }
+.txtInput{
+    width: 25vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5vh;
 }
