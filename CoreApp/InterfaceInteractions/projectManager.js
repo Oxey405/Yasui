@@ -8,13 +8,15 @@ var projectPath;
 var projectsFolder;
 
 /**
- * gets the default project folder path
+ * 
+ * @returns {JSON}
  */
 function getDefaultFolderPath() {
-    return appConfig;
+    return appConfig.projectsFolder;
 }
 /**
  * sets the default project folder path
+ * @param {String} newFolderPath
  */
 function setDefaultFolderPath(newFolderPath) {
  

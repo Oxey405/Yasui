@@ -3,7 +3,9 @@
  * SOFTWARE WITH NO WARRANTY INCLUDED
  */
 
-
+if(typeof os == 'undefined' || typeof fs == 'undefined' || typeof remote == 'undefined') {
+ console.error("Error ! the config loader will not work as it can't find one of the necessary modules !\r\nPlease refer to error code NML for more informations");
+}
 const YASUIDIR = os.homedir() + "/.yasui" ;
 var configFilePath = YASUIDIR + "/config.json";
 var folderproject = os.homedir() + "/Documents/";
@@ -16,6 +18,7 @@ var folderproject = os.homedir() + "/Documents/";
 //}
 const DEFAULTCONFIGURATION = `{"projectsFolder":"${folderproject}"}`;
 var appConfig ;
+var isConfigLoaded = false ;
 //making directories if they are not existing
 if(!fs.existsSync(YASUIDIR)) {
     fs.mkdir(YASUIDIR, (err) => {
@@ -31,9 +34,12 @@ if(!fs.existsSync(YASUIDIR)) {
                     remote.app.quit();
                 }
             });
+            //getting config in the appConfig variable
+            getConfig();
         }
     });
 }
+
 function getConfig() {
     console.log("Trying to get config file");
     fs.readFile(configFilePath, 'utf-8', function(err, data) {
@@ -49,6 +55,8 @@ function getConfig() {
             });
         } else {
             console.log("Configuration file loaded !");
+            onConfigLoad();
+            isConfigLoaded = true ;
             appConfig = JSON.parse(data);
         }
     });

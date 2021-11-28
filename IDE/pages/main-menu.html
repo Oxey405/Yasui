@@ -6,13 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YasUI Editor</title>
     <link rel="stylesheet" href="../styles/default.css" />
-    <!-- ALWAYS PUT DEPENDENCIES MANAGER HERE -->
+    <!-- ALWAYS PUT DEPENDENCIES MANAGER AND CONFIGLOADER HERE -->
     <script src="../../CoreApp/SystemRelated/modulesManager.js"></script>
+    <script src="../../CoreApp/SystemRelated/configLoader.js"></script>
+
     <script>
       //DEBUGGING SCRIPT TO WARN CONTRIBUTORS
       if(typeof os == 'undefined' || typeof fs == 'undefined' || typeof remote == 'undefined') {
-        console.warn("At least one of the most important modules is missing.\r\nBe sure to import \"../../CoreApp/SystemRelated/modulesManager.js\" in head\r\nto import all the necessary modules in the page.");
-        alert("A critical error occured ! Error code : NO-MODULES-LOADED");
+        var r = confirm("A critical error occured. Press \"OK\" to close program or cancel to get error logs in devtools\r\nError code : NML (NO-MODULES-LOADED)");
+       if(r == true) {
+        window.close();
+
+       } else {
+        console.error("You have forgotten to include the CoreApp/SystemRelated/modulesManger.js in the header !");
+
+       }
       }
     </script>
   </head>
@@ -29,58 +37,25 @@
             <button style="margin-right: 40px" class="firstchoicebutton">
               Create project
             </button>
-            <button class="secondchoicebutton">Load project</button>
+            <button class="secondchoicebutton" onclick="loadProject()">Load project</button>
             <input class="txtInput" type="text" id="projectPath" placeholder="Project's path">
-            <button style="margin-left: 10px;" onclick="openFolder();" class="normalbutton">📁</button>
+            <button style="margin-left: 10px;" onclick='openFolder()' class="normalbutton">📁</button>
           </div>
         </div>
       </header>
     </div>
     <!-- dependencies -->
+  
     <script src="../../CoreApp/InterfaceInteractions/projectManager.js"></script>
-    <script src="../../CoreApp/SystemRelated/configLoader.js"></script>
+    <script src="../../CoreApp/InterfaceInteractions/mainMenuScript.js"></script>
     <script src="../../CoreApp/InterfaceInteractions/dialogsManager.js"></script>
+    <script src="../../CoreApp/InterfaceInteractions/mainMenuScript.js"></script>
+    <script src="../../CoreApp/InterfaceInteractions/openFolderButton.js"></script>
+    <script src="../../CoreApp/InterfaceInteractions/openFileButton.js"></script>
+    <script src="../../CoreApp/InterfaceInteractions/loadProject.js"></script>
 
-
-    <script>
-      //getting the configuration
-      getConfig();
-      var newFolderSelected ;
-      var checkSelectedFolder;
-      //open a folder's dialog
-       function openFolder() {
-        showFolderSelectionDialog(appConfig.projectsFolder);
-        startFolderInterval();
-      }
-      //start a custom-made "async" function to wait for the user to select a folder
-      function startFolderInterval() {
-        console.log("statring folder interval");
-        checkSelectedFolder = setInterval(() => {
-        console.log("ahahah");
-          if(newFolderSelected != undefined) {
-            console.log("recieved " + newFolderSelected);
-            var folderSelectedRegex ;
-                  if(newFolderSelected.includes("\\")) {
-              var antislashregex = /\\/g;
-              folderSelectedRegex = newFolderSelected.replace(antislashregex, "/");
-          } 
-          document.getElementById("projectPath").value = folderSelectedRegex;
-          setDefaultFolderPath(folderSelectedRegex);
-          closeFolderInterval();
-          }
-        }, 100);
-      }
-      //stop the custom-made "async" function to wait for the user to selet a folder
-        closeFolderInterval();
-
-        function closeFolderInterval() {
-          newFolderSelected == undefined;
-          console.log("cleared interval");
-          clearInterval(checkSelectedFolder);
-
-        }
-        //at the start, wait 500ms and then, set the value of the projectPath to the default projectsFolder
-      setTimeout(() => {document.getElementById("projectPath").value = appConfig.projectsFolder;}, 500);
+<script>
+      folderSelectionResultHtmlElement = "projectPath" ;
     </script>
     <!-- <script src="../VanillaJS/threeD.js"></script> -->
   </body>
