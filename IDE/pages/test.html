@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YasUI Editor</title>
+    <!-- <link rel="stylesheet" href="../styles/default.css" /> -->
+    <!-- <link rel="stylesheet" href="../styles/editor.css" /> -->
+
+    <!-- ALWAYS PUT DEPENDENCIES MANAGER AND CONFIGLOADER HERE -->
+<style>
+    #container {
+  width: 75%;
+  height: 75%;
+  padding: 1em;
+  margin: 1em;
+  overflow:hidden;
+  border-radius: 0.75rem;
+  background-color: lightgray;
+  user-select: none;
+  touch-action: none;
+  box-sizing: border-box;
+}
+
+.draggable {
+  width: 10em;
+  padding: 0 1em;
+  border-radius: 0.75em;
+  background-color: #29e;
+  color: white;
+  touch-action: none;
+  user-select: none;
+  position: fixed;
+  top: 50vh;
+  right: 2em;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+  </head>
+  <body>
+    <div id="container">
+        <p>this is a resizable element</p>
+        <p>try changing its size so that the draggable is outside it</p>
+      </div>
+    
+      <div class="draggable">
+        <p>this is a draggable element</p>
+        <p>tap it to reflow</p>
+      </div>
+
+
+    <!-- dependencies -->
+
+    <script>
+        const resizableContainer = interact('#container')
+const draggable = interact('.draggable')
+
+draggable.on('tap', function (event) {
+  // start a drag action to apply modifiers
+  draggable.reflow({ name: 'drag', axis: 'xy' })
+})
+
+// the usual interact actions setup
+resizableContainer.resizable({
+  edges: { bottom: true, right: true },
+  modifiers: [
+    interact.modifiers.restrictEdges({
+      outer: 'html',
+    }),
+    interact.modifiers.restrictEdges({
+      min: { width: 200, height: 200 }
+    })
+  ],
+  listeners: {
+    move: function (event) {
+      let { x, y } = event.target.dataset
+
+      x = (parseFloat(x) || 0) + event.deltaRect.left
+      y = (parseFloat(y) || 0) + event.deltaRect.top
+
+      Object.assign(event.target.style, {
+        width: `${event.rect.width}px`,
+        height: `${event.rect.height}px`,
+        transform: `translate(${x}px, ${y}px)`
+      })
+
+      Object.assign(event.target.dataset, { x, y })
+    }
+  }
+})
+
+draggable.draggable({
+  inertia: true,
+  modifiers: [
+    interact.modifiers.restrictRect({
+      restriction: document.querySelector('#container'),
+      endOnly: true,
+    })
+  ],
+  listeners: {
+    move (event) {
+      const x = (parseFloat(event.target.dataset.x) || 0) + event.dx
+      const y = (parseFloat(event.target.dataset.y) || 0) + event.dy
+
+      event.target.style.transform =
+        `translate(${x}px, ${y}px)`
+      Object.assign(event.target.dataset, { x, y })
+    },
+  }
+})
+    </script>
+
+ 
+<script>
+      folderSelectionResultHtmlElement = "projectPath" ;
+    </script>
+    <!-- <script src="../VanillaJS/threeD.js"></script> -->
+  </body>
+</html>

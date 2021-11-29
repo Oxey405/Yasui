@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Oxey405/Yasui#readme",
   "dependencies": {
+    "@braks/revue-draggable": "^0.3.9",
     "@electron/remote": "^2.0.1",
     "electron": "^16.0.1",
     "three": "^0.134.0"

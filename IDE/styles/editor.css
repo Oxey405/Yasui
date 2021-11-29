@@ -1,0 +1,138 @@
+
+
+/*
+What is that file :
+This is the default CSS file.
+You can look at all the defined colors here
+------------------------------------------------------
+Credits : © 2021 Oxey405 (Alexis) <Oxey405@gmail.com>
+License : MIT LICENSE
+*/
+:root {
+    --supergrey: #141414;
+    --stone-gray: #303030;
+    --darkgreen: #000f08;
+    --pine-green: #07C51A;
+    --citrus-yellow: #FEBF1F;
+    --coquelicot: #f34213;
+    --bluey: #3e2f5b;
+    --font-default: 'Roboto Mono', monospace;
+  }
+
+
+  .draggable {
+    width: 10em;
+    padding: 0 1em;
+    border-radius: 0.75em;
+    color: white;
+    background-color: #303030;
+    touch-action: none;
+    user-select: none;
+    position: fixed;
+    top: 50vh;
+    right: 2em;
+  }
+
+.editor {
+    width: 90vw;
+    height: 90vh;
+    overflow: scroll;
+    padding: 1em;
+    margin: 1em;
+    overflow:hidden;
+    border-radius: 0.75rem;
+    user-select: none;
+    touch-action: none;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--supergrey);
+    font-family:  var(--font-default);
+    color: white;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+.centeralign {
+    text-align: center;
+}
+
+.headingone {
+    font-size: 10vh;
+}
+.headingtwo {
+    font-size: 4vh;
+    color: rgb(190, 190, 190);
+}
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.main-content {
+    color: white;
+    z-index: 99;
+    width: 100%;
+    margin: 0px auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 3px;
+    border: solid;
+    border-color: white;
+}
+::-webkit-scrollbar-track {
+    background: #ffffff00;
+}
+
+.firstchoicebutton {
+    border: none;
+    border-radius: 10vh;
+    background-color: var(--pine-green);
+    color: white;
+    width: 18vw;
+    min-width: fit-content;
+    height: 4vh;
+    min-height: fit-content;
+}
+.secondchoicebutton {
+    border: none;
+    border-radius: 10vh;
+    background-color: var(--bluey);
+    color: white;
+    width: 18vw;
+    min-width: fit-content;
+    height: 4vh;
+    min-height: fit-content;
+}
+.normalbutton {
+    border: none;
+    border-radius: 10vh;
+    background-color: var(#a8a8a8);
+    color: rgb(10, 10, 10);
+    width: 5vw;
+    height: 4vh;
+}
+.button-array {
+    width: 48vw;
+    height: 30vh;
+    background-color: var(--stone-gray);
+    border-radius: 4vh;
+    display: flex; flex-direction: row; justify-content: center;align-items: center;flex-wrap: wrap;
+}
+ .space-5vh {
+     height: 5vh;
+     width: 5vw;
+ }
+.txtInput{
+    width: 25vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5vh;
+}

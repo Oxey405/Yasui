@@ -7,6 +7,7 @@ function applyRegex() {
         projectFileRegex = projectFile.replace(antislashregex, "/");
     } 
     console.log("loading " + projectFileRegex);
+    window.location = "./editor.html" ;
   }
   }
 /**
