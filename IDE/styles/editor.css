@@ -21,35 +21,38 @@ License : MIT LICENSE
 
 
   .draggable {
-    width: 10em;
+    width: fit-content;
     padding: 0 1em;
     border-radius: 0.75em;
     color: white;
     background-color: #303030;
     touch-action: none;
     user-select: none;
-    position: fixed;
+    position: absolute;
     top: 50vh;
     right: 2em;
+    display: flex;
+    flex-direction: column;
   }
 
 .editor {
-    width: 90vw;
-    height: 90vh;
+    width: 96%;
+    height: 72%;
     overflow: scroll;
-    padding: 1em;
-    margin: 1em;
+    padding-bottom: 1em;
     overflow:hidden;
     border-radius: 0.75rem;
     user-select: none;
     touch-action: none;
     box-sizing: border-box;
+    position: absolute;
+
 }
 body {
     background-color: var(--supergrey);
     font-family:  var(--font-default);
     color: white;
-    text-align: center;
+    /* text-align: center; */
     padding: 0;
     margin: 0;
 }

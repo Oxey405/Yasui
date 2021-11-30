@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YasUI Editor</title>
-    <!-- <link rel="stylesheet" href="../styles/default.css" /> -->
     <link rel="stylesheet" href="../styles/editor.css" />
 
     <!-- ALWAYS PUT DEPENDENCIES MANAGER AND CONFIGLOADER HERE -->
@@ -32,16 +31,21 @@
   <body>
     <!-- <canvas class="bg" id="bg"> </canvas> -->
     <div class="main-content">
-      <header class="aligncenter">
-        <h1 class="headingone bigsizefont" id="projectTitle">{{ projectName }}</h1>
+      <header>
+        <h1 class="bigsizefont" id="projectTitle">{{ projectName }}</h1>
         
       </header>
     </div>
-    <div class="editor" id="editor" style="top: 200px;">
+    <div class="editor" id="editor" >
       
-      <div id="drag-1" class="draggable"> <p>Draggable Element</p> </div>
-      <div id="drag-2" class="draggable"> <p>Draggable Element</p> </div>
-      <div id="drag-3" class="draggable"> <p>Draggable Element</p> </div>
+      <div id="drag-1" style="transform: translate(-512px, -330px);" data-x="-512" data-y="-330" class="draggable"> <p>Example node</p>   
+        <select name="scriptSelect" id="scriptSelect" style="margin-bottom: 1em;">
+          <option value="undefined">select something</option>
+        <option value="logic/and">Logic/And</option>
+        <option value="logic/or">Logic/Or</option>
+        <option value="logic/test">Logic/Test</option>
+      </select> </div>
+     
 
     </div>
 
@@ -59,6 +63,7 @@
  
 <script>
       folderSelectionResultHtmlElement = "projectPath" ;
+      loadProjectFile(window.localStorage.getItem("projectPath"));
     </script>
     <!-- <script src="../VanillaJS/threeD.js"></script> -->
   </body>
